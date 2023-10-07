@@ -27,6 +27,12 @@ app.post("/products", async (req, res)=>{
 
 
 
+app.delete("/products/:id", async(req,res)=> {
+    let id = req.params.id
+    res.send(await product.deleteProducts(id))
+
+})
+
 
 app.listen(PORT,()=>{
     console.log(`Servidor Online ${PORT}`)
