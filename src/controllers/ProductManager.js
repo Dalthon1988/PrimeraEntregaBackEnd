@@ -1,8 +1,8 @@
 import {promises as fs } from 'fs';
+import { nanoid } from "nanoid";
 // nanoid Un generador de ID de cadena único, pequeño, seguro y compatible con URL para JavaScript.
 // informacion sacada desde https://www.npmjs.com/package/nanoid
 
-import { nanoid } from "nanoid";
 
 class ProductManager{
     constructor() {
