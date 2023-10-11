@@ -54,7 +54,7 @@ class ProductManager{
 
     deleteProducts = async (id)=>{
         let products =  await this.readProducts();
-        let existProduct = products.some(prod => prod.id === id)
+        let existProduct = products.some((prod) => prod.id === id)
         if (existProduct){
              let filterProducts = products.filter(prod => prod.id != id)
              await this.writeProducts(filterProducts)
