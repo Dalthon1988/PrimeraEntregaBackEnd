@@ -52,7 +52,7 @@ class CartManager {
         if(cartById.products.some(prod => prod.id === productId)){
             let productInCart = cartById.products.find((prod) => prod.id === productId);
 
-            productInCart.quantity +1;
+            productInCart.quantity ++;
             console.log(productInCart.cantidad)
             let cartsConcat = [cartById, ...cartFilter];
             await this.writeCarts(cartsConcat);
