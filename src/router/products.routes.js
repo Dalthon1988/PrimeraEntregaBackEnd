@@ -1,13 +1,13 @@
 import { Router } from "express";
-import ProductManager from "../controllers/ProductManager.js";
+import ProductManager from "../models/ProductManager.js";
 
 const ProductRouter = Router()
 const product = new ProductManager();
 
-ProductRouter.get("/products", async (req, res) => {
+ProductRouter.get("/", async (req, res) => {
   res.send(await product.getProducts());
 });
-ProductRouter.get("/products/:id", async (req, res) => {
+ProductRouter.get("/:id", async (req, res) => {
   let id = req.params.id;
   res.send(await product.getProductsById(id));
 });

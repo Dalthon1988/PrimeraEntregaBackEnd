@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 
 class ProductManager{
     constructor() {
-        this.path = "./src/models/products.json"        
+        this.path = "./src/data/products.json"        
     }
 
     readProducts = async () => {

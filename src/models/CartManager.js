@@ -1,13 +1,13 @@
 import {promises as fs } from 'fs';
 import { nanoid } from "nanoid";
 
-import ProductManager from "../controllers/ProductManager.js";
+import ProductManager from "./ProductManager.js";
 
 const productALL = new ProductManager
 
 class CartManager {
     constructor() {
-        this.path = './src/models/carts.json';      
+        this.path = './src/data/carts.json';      
     }
 
 
