@@ -1,5 +1,7 @@
 import {promises as fs } from 'fs';
 import { nanoid } from "nanoid";
+import { getJSONFromFile, saveJSONToFile, generateID } from '../utils.js';
+
 // nanoid Un generador de ID de cadena único, pequeño, seguro y compatible con URL para JavaScript.
 // informacion sacada desde https://www.npmjs.com/package/nanoid
 
@@ -7,6 +9,34 @@ import { nanoid } from "nanoid";
 class ProductManager{
     constructor() {
         this.path = "./src/data/products.json"        
+    }
+    async createProduct(product) {
+        const { title, description, code, price, status, stock, category, thumbnail} = product;
+    
+        const productStatus = status !== undefined ? status : true;
+    
+        const productThumbnail = thumbnail !== undefined ? thumbnail : [];
+    
+        if (!title || !description || !code || !price || !stock || !category ){
+            throw new Error ('Por favor, complete todos los campos.')
+        }
+        const products = await getJSONFromFile(this.path);
+        const id = generateID();
+    
+        const newProduct = { 
+            id,
+            title,
+            description,
+            code,
+            price,
+            status:productStatus,
+            stock,
+            category,
+            thumbnail:productThumbnail
+        };
+        products.push(newProduct);
+        
+        return saveJSONToFile(this.path, products)
     }
 
     readProducts = async () => {
@@ -64,10 +94,9 @@ class ProductManager{
 
     }
 
-    
 }
 
-const product = new ProductManager
+
 export default ProductManager 
 
 
